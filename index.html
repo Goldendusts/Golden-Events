@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Golddust Events</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #fdfdfd;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #d4af37;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      border-radius: 0 0 15px 15px;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    h2 {
+      color: #d4af37;
+      margin-bottom: 0.5rem;
+    }
+    .section {
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .gallery, .pricing {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .gallery img, .pricing img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+      height: 150px;
+    }
+    .pricing-item {
+      background-color: #f9f9f9;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .pricing-item h3 {
+      color: #d4af37;
+      margin-bottom: 0.5rem;
+    }
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+      border-radius: 15px 15px 0 0;
+    }
+    input[type="file"] {
+      display: block;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Golddust Events</h1>
+    <p>We make your celebrations shine ✨</p>
+  </header>
+
+  <div class="container">
+
+    <div class="section">
+      <h2>About Us</h2>
+      <p>
+        At Golddust Events, we specialize in elegant and creative stage decorations for weddings, baptisms, engagements, birthdays, naming ceremonies, and all your joyful occasions. Our passion is in the details, and we strive to bring your dream event to life with style and heart.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Gallery</h2>
+      <p>See some of our past setups and magical moments.</p>
+      <div class="gallery" id="galleryPreview"></div>
+      <input type="file" id="galleryUpload" multiple accept="image/*">
+    </div>
+
+    <div class="section">
+      <h2>Pricing</h2>
+      <p>Our popular decoration packages:</p>
+      <div class="pricing">
+        <div class="pricing-item">
+          <h3>Wedding Stage</h3>
+          <p>Starting at ₹25,000</p>
+          <img src="https://via.placeholder.com/200x150?text=Wedding+Stage" alt="Wedding Stage">
+        </div>
+        <div class="pricing-item">
+          <h3>Baptism Setup</h3>
+          <p>Starting at ₹10,000</p>
+          <img src="https://via.placeholder.com/200x150?text=Baptism+Setup" alt="Baptism Setup">
+        </div>
+        <div class="pricing-item">
+          <h3>Birthday Theme</h3>
+          <p>Starting at ₹8,000</p>
+          <img src="https://via.placeholder.com/200x150?text=Birthday+Setup" alt="Birthday Setup">
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Contact Us</h2>
+      <p>📞 Call or WhatsApp: +91-9876543210<br>📧 Email: contact@golddustevents.in</p>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2025 Golddust Events. All rights reserved.
+  </footer>
+
+  <script>
+    const galleryInput = document.getElementById('galleryUpload');
+    const galleryPreview = document.getElementById('galleryPreview');
+
+    galleryInput.addEventListener('change', () => {
+      galleryPreview.innerHTML = '';
+      const files = galleryInput.files;
+      for (const file of files) {
+        const reader = new FileReader();
+        reader.onload = e => {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          galleryPreview.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>
